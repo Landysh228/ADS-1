@@ -90,6 +90,38 @@ uint64_t sumPrime(uint64_t hbound) {
 }
 
 uint64_t twinPrimes(uint64_t lbound, uint64_t hbound) {
-  // вставьте код функции
-  return 1;
+  if (hbound <= lbound || hbound < 3) return 0;
+    
+    uint64_t count = 0;
+  
+    for (uint64_t i = lbound; i + 2 < hbound; i++) {
+        bool isFirstPrime = true;
+        if (i < 2) {
+            isFirstPrime = false;
+        } else {
+            for (uint64_t j = 2; j * j <= i; j++) {
+                if (i % j == 0) {
+                    isFirstPrime = false;
+                    break;
+                }
+            }
+        }
+        
+        if (!isFirstPrime) continue;
+        
+        uint64_t second = i + 2;
+        bool isSecondPrime = true;
+        for (uint64_t j = 2; j * j <= second; j++) {
+            if (second % j == 0) {
+                isSecondPrime = false;
+                break;
+            }
+        }
+        
+        if (isSecondPrime) {
+            count++;
+        }
+    }
+    
+    return count;
 }
