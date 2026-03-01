@@ -2,10 +2,8 @@
 #include <cstdint>
 #include "alg.h"
 
-
 bool checkPrime(uint64_t value) {
   if (value < 2) return false;
-    
     for (uint64_t i = 2; i * i <= value; ++i) {
         if (value % i == 0) {
             return false;
@@ -106,9 +104,7 @@ uint64_t twinPrimes(uint64_t lbound, uint64_t hbound) {
                 }
             }
         }
-        
         if (!isFirstPrime) continue;
-        
         uint64_t second = i + 2;
         bool isSecondPrime = true;
         for (uint64_t j = 2; j * j <= second; j++) {
@@ -117,11 +113,9 @@ uint64_t twinPrimes(uint64_t lbound, uint64_t hbound) {
                 break;
             }
         }
-        
         if (isSecondPrime) {
             count++;
         }
     }
-    
     return count;
 }
